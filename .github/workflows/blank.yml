@@ -17,13 +17,16 @@ jobs:
     coverage:
         runs-on: ubuntu-latest
         steps:
+          - name: Run tests and generate coverage
+            run: |
+                  pytest common --cov=common --cov-report=xml:common/cov.xml
           - name: common-cover
             uses: orgoro/coverage@v3.2
             with:
                 coverageFile: common/cov.xml
                 token: ${{ secrets.GITHUB_TOKEN }}
-          - name: service1-cover 
-            uses: orgoro/coverage@v3.2
-            with:
-                coverageFile: services/service1/cov.xml
-                token: ${{ secrets.GITHUB_TOKEN }}
+          # - name: service1-cover 
+          #   uses: orgoro/coverage@v3.2
+          #   with:
+          #       coverageFile: services/service1/cov.xml
+          #       token: ${{ secrets.GITHUB_TOKEN }}
