@@ -17,8 +17,13 @@ jobs:
     coverage:
         runs-on: ubuntu-latest
         steps:
-          - name: Get Cover 
+          - name: common-cover
             uses: orgoro/coverage@v3.2
             with:
-                coverageFile: coverage.xml
+                coverageFile: common/cov.xml
+                token: ${{ secrets.GITHUB_TOKEN }}
+          - name: service1-cover 
+            uses: orgoro/coverage@v3.2
+            with:
+                coverageFile: services/service1/cov.xml
                 token: ${{ secrets.GITHUB_TOKEN }}
